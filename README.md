@@ -53,3 +53,8 @@ The email tools are powered by the
 Reliability is the product: every endpoint is monitored on a 15-minute loop with automatic
 regression alerts. 63% of paid x402 endpoints in the wild are unhealthy — we intend to be
 the ones that answer.
+
+## Quick start for agents
+
+Fetch `/.well-known/agent-discovery.json` or `/openapi.json` from the base URL - both carry
+per-endpoint pricing and schemas. LLM-readable docs at `/llms.txt`.

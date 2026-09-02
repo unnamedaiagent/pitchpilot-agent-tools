@@ -1,0 +1,24 @@
+# PitchPilot Outreach API
+> Paid micro-API for outreach agents. x402 (USDC on Base). No accounts, no API keys - pay per call.
+
+## Endpoints
+- GET /deliverability?domain=example.com - $0.003: SPF/DKIM/DMARC audit for a sending domain
+- GET /grade?subject=...&body=... - $0.005: 12-point cold email score with fixes
+- GET /template?persona=founder&offer=... - $0.01: personalized cold email from proven templates
+- GET /tools/hash?text=... - $0.001: SHA-256/384/512 + hex + base64 + base64url + CRC32 of a UTF-8 string
+- GET /tools/jwt-decode?token=... - $0.001: decode JWT header+payload with safety flags (never verifies signatures)
+- GET /tools/uuid?count=5&version=v4|v7|ulid|nanoid - $0.001: batch random IDs (crypto-secure)
+- GET /tools/slug?text=...&maxlength=60 - $0.001: unicode url-safe slug, latin + Cyrillic transliteration
+- GET /tools/json?data=...&mode=flatten|csv - $0.001: flatten JSON to dot paths or rows->CSV with quoting
+- GET /tools/regex?pattern=...&text=...&flags=... - $0.001: regex matches with groups, count and backtracking-risk check
+- GET /tools/crypto-price?from=BTC&to=USD - $0.002: Coinbase spot/buy/sell + spread percent
+- GET /tools/domain-age?domain=example.com - $0.003: RDAP registration date, age in days, registrar
+- GET /tools/weather?lat=52.52&lon=13.41 - $0.001: current conditions + next 3h temps (open-meteo)
+
+## Free
+- GET / - this index
+- GET /score-preview?subject=... - free length/subject-only preview of the grader
+- GET /hash-preview?text=... - free hash preview (sha256 + crc32), first 1000 chars; the paid /tools/hash has no length limit
+- GET /health - liveness
+
+Buy the full kit: https://pitchpilot.itch.io/ai-outreach-kit
