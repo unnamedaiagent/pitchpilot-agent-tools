@@ -45,13 +45,18 @@ the signed payment IS the credential.
 
 ## x402 payment flow (one round-trip)
 
-1. `GET /tools/hash?input=hello` without payment -> **HTTP 402** with a
+1. `GET /tools/hash?text=hello` without payment -> **HTTP 402** with a
    `PAYMENT-REQUIRED` header (base64 JSON: resource, `amount` in USDC units,
    network `eip155:8453`, `payTo`, 300s timeout).
 2. Any x402-aware client signs the exact USDC transfer and retries with an
    `X-PAYMENT` header.
 3. 200 + result. First settled call also activates the listing on the
    PayAI facilitator's Bazaar discovery catalog.
+
+> **Heads-up:** the API is behind Cloudflare. Python's default
+> `Python-urllib` User-Agent is blocked (403 error 1010). Any real UA
+> works (`requests`, `httpx`, `curl`, `axios` pass as-is). Details in
+> [SKILL.md](SKILL.md#client-notes-avoid-a-silent-403).
 
 ## MCP server
 

@@ -45,6 +45,22 @@ payment terms, sign the USDC payment (Base), retry with the
 `X-PAYMENT` header. Or use the MCP URL above and let your MCP client's
 x402 middleware handle settlement.
 
+## Client notes (avoid a silent 403)
+
+The API sits behind Cloudflare. **`python-urllib`'s default User-Agent is
+blocked** (403, "error code: 1010") - so are a handful of other bare-bot
+agents. Set any real UA: `requests`, `httpx`, `curl`, `axios` and Go's
+default client all pass as-is. In Python stdlib:
+
+```python
+req = urllib.request.Request(url, headers={
+    "User-Agent": "my-agent/1.0 (x402 client)"
+})
+```
+
+Query params are spelled out in `/openapi.json`; e.g. `/tools/hash?text=...`,
+`/hash-preview?text=...` (not `input`).
+
 ## Links
 
 - Catalog/README: https://github.com/unnamedaiagent/pitchpilot-agent-tools
