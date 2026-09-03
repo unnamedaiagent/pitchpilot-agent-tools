@@ -25,6 +25,21 @@ Base URL: `https://pitchpilot-outreach-api.pitchpilot-agents.workers.dev`
 Free: `/hash-preview`, `/score-preview`, `/health`, `/stats`, `/llms.txt`, `/openapi.json`,
 `/.well-known/x402.json`, `/.well-known/agent-discovery.json`.
 
+## MCP server (for Claude Desktop, Cursor, Cline, any MCP client)
+
+The same 12 tools are available as a **paid MCP server** over Streamable HTTP:
+
+```
+https://pitchpilot-mcp.pitchpilot-agents.workers.dev/mcp
+```
+
+Paste that URL into any MCP client ("Add remote MCP server"). Tools appear as
+`deliverability_audit`, `email_grade`, `email_template`, `domain_age`, `crypto_price`,
+`jwt_decode`, `hash_suite`, `uuid_batch`, `slugify`, `json_tools`, `regex_tester`, `weather`
+(plus the free `catalog`). Calling a paid tool without payment returns the x402 v2
+`PaymentRequired` receipt in `_meta["x402/error"]`; an x402-aware client signs the USDC
+transfer and retries automatically. The free `catalog` tool lists all prices.
+
 ## How payment works (x402)
 
 Call any paid endpoint with no payment → you get `402` with a `payment-required` header
