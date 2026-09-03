@@ -1,0 +1,21 @@
+name: probes
+# Smoke-tests every documented route against the live API with canonical params:
+# free previews must 200, paid endpoints must 402 with a valid x402 v2 gate.
+# Guards against doc/param drift (docs are part of the free-touch funnel).
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '23 6 * * *'   # daily at 06:23 UTC
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 free_probes.py
