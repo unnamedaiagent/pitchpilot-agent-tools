@@ -53,9 +53,12 @@ def fetch(path, query):
     req = urllib.request.Request(url, headers={"User-Agent": UA})
     try:
         with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
-            return r.status, dict(r.headers), r.read()
+            return r.status, r.headers, r.read()
     except urllib.error.HTTPError as e:
-        return e.code, dict(e.headers), e.read()
+        # Keep the email.message.Message (NOT dict()): its .get() is
+        # case-insensitive. The header arrives as PAYMENT-REQUIRED (upper)
+        # over HTTP/1.1 and payment-required (lower) over HTTP/2.
+        return e.code, e.headers, e.read()
 
 
 def main():
@@ -86,11 +89,18 @@ def main():
                 print(f"  FAIL paid {label}: status={status}, payment-required header missing")
                 continue
             req_doc = json.loads(base64.b64decode(pay))
-            accepts = (req_doc.get("accepts") or [{}])[0]
-            if accepts.get("x402Version") == 2 and accepts.get("scheme") == "exact" \
-                    and accepts.get("amount") and accepts.get("payTo"):
+            # x402 v2: x402Version lives at the TOP level; per-route terms
+            # (scheme/amount/payTo/network) live inside accepts[0]. Verified
+            # live 2026-09-04 (hash-preview b64 decode): {"x402Version":2,
+            # "resource":{...},"accepts":[{"scheme":"exact","network":
+            # "eip155:8453","amount":"1000","asset":"0x83..","payTo":"0x40.."}]}
+            acc = (req_doc.get("accepts") or [{}])[0]
+            if req_doc.get("x402Version") == 2 and acc.get("scheme") == "exact" \
+                    and str(acc.get("amount", "")).isdigit() and acc.get("payTo") \
+                    and acc.get("network") == "eip155:8453":
                 ok += 1
-                print(f"  OK  paid  {label}: 402 x402v2 exact amount={accepts['amount']}")
+                usd = int(acc["amount"]) / 1e6
+                print(f"  OK  paid  {label}: 402 x402v2 exact amount={acc['amount']} (${usd:.3f})")
             else:
                 bad += 1
                 print(f"  FAIL paid {label}: unexpected payment-required shape: {req_doc}")
