@@ -3,7 +3,7 @@ name: pitchpilot-agent-tools
 description: Pay-per-call micro-tools for AI agents over x402 (USDC on Base) - email deliverability audit, cold-email grading, templates, hashing, JWT decode, UUID, slug, JSON, regex, crypto price, domain age, weather. No signup, no API keys.
 ---
 
-# PitchPilot Agent Tools (x402)
+# sigtap Agent Tools (x402)
 
 Paid micro-API for agents. HTTP 402 + USDC on Base (eip155:8453) via the PayAI
 facilitator. No accounts, no keys - the signed payment is the credential.
@@ -11,9 +11,9 @@ Free preview routes let you verify the output shape before paying anything.
 
 ## MCP server (same 12 tools)
 
-Streamable HTTP: `https://pitchpilot-mcp.pitchpilot-agents.workers.dev/mcp`
+Streamable HTTP: `https://sigtap-mcp.sigtap.workers.dev/mcp`
 Add to any MCP client. Free `catalog` tool lists all prices.
-OpenAPI: https://pitchpilot-outreach-api.pitchpilot-agents.workers.dev/openapi.json
+OpenAPI: https://sigtap-outreach-api.sigtap.workers.dev/openapi.json
 
 ## Paid endpoints (GET unless noted)
 

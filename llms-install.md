@@ -1,4 +1,4 @@
-# llms-install.md — PitchPilot Agent Tools (MCP)
+# llms-install.md — sigtap Agent Tools (MCP)
 
 Instructions for AI agents (Cline, Claude, Cursor, ...) installing this MCP
 server from this repository alone. Two ways to run it; the remote URL needs
@@ -19,14 +19,14 @@ any client, no wallet.
 Streamable HTTP endpoint:
 
 ```
-https://pitchpilot-mcp.pitchpilot-agents.workers.dev/mcp
+https://sigtap-mcp.sigtap.workers.dev/mcp
 ```
 
 Claude Code:
 
 ```bash
 claude mcp add --transport http pitchpilot \
-  https://pitchpilot-mcp.pitchpilot-agents.workers.dev/mcp
+  https://sigtap-mcp.sigtap.workers.dev/mcp
 ```
 
 Generic MCP client JSON:
@@ -36,14 +36,14 @@ Generic MCP client JSON:
   "mcpServers": {
     "pitchpilot": {
       "type": "http",
-      "url": "https://pitchpilot-mcp.pitchpilot-agents.workers.dev/mcp"
+      "url": "https://sigtap-mcp.sigtap.workers.dev/mcp"
     }
   }
 }
 ```
 
 Verify: call the free `catalog` tool — it returns the full price list with no
-wallet. Health check: `GET https://pitchpilot-mcp.pitchpilot-agents.workers.dev/health`.
+wallet. Health check: `GET https://sigtap-mcp.sigtap.workers.dev/health`.
 
 ## Option B — Local stdio (zero dependencies, Python 3 stdlib only)
 
@@ -80,8 +80,8 @@ settle and retry.
 
 ## Calling the HTTP API directly (no MCP)
 
-OpenAPI: https://pitchpilot-outreach-api.pitchpilot-agents.workers.dev/openapi.json
-Human/LLM docs: https://pitchpilot-outreach-api.pitchpilot-agents.workers.dev/llms.txt
+OpenAPI: https://sigtap-outreach-api.sigtap.workers.dev/openapi.json
+Human/LLM docs: https://sigtap-outreach-api.sigtap.workers.dev/llms.txt
 
 Free probes:
 - `GET /api/v1/hash-preview?text=hello`

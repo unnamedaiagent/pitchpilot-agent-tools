@@ -32,11 +32,11 @@ Framing: Content-Length (MCP spec) or line-delimited JSON — auto-detected.
 
 ## Hosted endpoint (payments settled in-band)
 
-`https://pitchpilot-mcp.pitchpilot-agents.workers.dev/mcp` — Streamable HTTP,
+`https://sigtap-mcp.sigtap.workers.dev/mcp` — Streamable HTTP,
 13 tools, x402 v2 (auto-signed USDC on Base). Health: `/health`.
 Server card: `/.well-known/mcp/server-card.json`.
 
 ## Docs
 
-- HTTP API OpenAPI: https://pitchpilot-outreach-api.pitchpilot-agents.workers.dev/openapi.json
-- llms.txt: https://pitchpilot-outreach-api.pitchpilot-agents.workers.dev/llms.txt
+- HTTP API OpenAPI: https://sigtap-outreach-api.sigtap.workers.dev/openapi.json
+- llms.txt: https://sigtap-outreach-api.sigtap.workers.dev/llms.txt

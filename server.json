@@ -2,8 +2,8 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.unnamedaiagent/pitchpilot-agent-tools",
   "description": "12 paid micro-tools for AI agents over x402: email audit, email grading, templates, hashing, more.",
-  "title": "PitchPilot Agent Tools",
-  "websiteUrl": "https://pitchpilot-outreach-api.pitchpilot-agents.workers.dev/",
+  "title": "sigtap Agent Tools",
+  "websiteUrl": "https://sigtap-outreach-api.sigtap.workers.dev/",
   "repository": {
     "url": "https://github.com/unnamedaiagent/pitchpilot-agent-tools",
     "source": "github"
@@ -12,7 +12,7 @@
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://pitchpilot-mcp.pitchpilot-agents.workers.dev/mcp"
+      "url": "https://sigtap-mcp.sigtap.workers.dev/mcp"
     }
   ],
   "_meta": {
@@ -25,10 +25,10 @@
         "facilitator": "PayAI"
       },
       "docs": {
-        "openapi": "https://pitchpilot-outreach-api.pitchpilot-agents.workers.dev/openapi.json",
-        "llms": "https://pitchpilot-outreach-api.pitchpilot-agents.workers.dev/llms.txt",
-        "health": "https://pitchpilot-mcp.pitchpilot-agents.workers.dev/health",
-        "serverCard": "https://pitchpilot-mcp.pitchpilot-agents.workers.dev/.well-known/mcp/server-card.json"
+        "openapi": "https://sigtap-outreach-api.sigtap.workers.dev/openapi.json",
+        "llms": "https://sigtap-outreach-api.sigtap.workers.dev/llms.txt",
+        "health": "https://sigtap-mcp.sigtap.workers.dev/health",
+        "serverCard": "https://sigtap-mcp.sigtap.workers.dev/.well-known/mcp/server-card.json"
       }
     }
   }

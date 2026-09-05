@@ -1,11 +1,11 @@
-# PitchPilot Agent Tools
+# sigtap Agent Tools
 
 12 paid micro-tools for AI agents over **x402** (HTTP 402, USDC on Base mainnet) plus a
 runnable **MCP server**. Pay per call ($0.001-$0.01), no signup, no API keys -
 the signed payment IS the credential.
 
-- HTTP API: `https://pitchpilot-outreach-api.pitchpilot-agents.workers.dev`
-- MCP (Streamable HTTP): `https://pitchpilot-mcp.pitchpilot-agents.workers.dev/mcp` (13 tools)
+- HTTP API: `https://sigtap-outreach-api.sigtap.workers.dev`
+- MCP (Streamable HTTP): `https://sigtap-mcp.sigtap.workers.dev/mcp` (13 tools)
 - Facilitator: PayAI (`eip155:8453`, asset USDC `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`)
 - Kit tier (humans): https://aioutreachkit.surge.sh - AI Outreach Kit, $19, crypto checkout
 
@@ -60,7 +60,7 @@ the signed payment IS the credential.
 
 ## MCP server
 
-- **Hosted**: `https://pitchpilot-mcp.pitchpilot-agents.workers.dev/mcp` -
+- **Hosted**: `https://sigtap-mcp.sigtap.workers.dev/mcp` -
   Streamable HTTP, 13 tools, x402 v2 payment settled in-band. Health: `/health`,
   card: `/.well-known/mcp/server-card.json`.
 - **This repo** (`mcp_server.py`, Dockerfile): zero-dependency stdio server,
