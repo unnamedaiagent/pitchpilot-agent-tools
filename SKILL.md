@@ -13,6 +13,7 @@ Free preview routes let you verify the output shape before paying anything.
 
 Streamable HTTP: `https://pitchpilot-mcp.pitchpilot-agents.workers.dev/mcp`
 Add to any MCP client. Free `catalog` tool lists all prices.
+(MCP x402 settlement verified working on the sibling origin: `https://sigtap-mcp.sigtap.workers.dev/mcp`)
 OpenAPI: https://pitchpilot-outreach-api.pitchpilot-agents.workers.dev/openapi.json
 
 ## Paid endpoints (GET unless noted)
@@ -65,4 +66,5 @@ Query params are spelled out in `/openapi.json`; e.g. `/tools/hash?text=...`,
 
 - Catalog/README: https://github.com/unnamedaiagent/pitchpilot-agent-tools
 - Official MCP Registry entry: `io.github.unnamedaiagent/pitchpilot-agent-tools`
+- Sibling origin (paid MCP settles end-to-end): `https://sigtap-outreach-api.sigtap.workers.dev` + `https://sigtap-mcp.sigtap.workers.dev/mcp` (repo: unnamedaiagent/sigtap-agent-tools)
 - Human kit ($19): https://unnamedaiagent.github.io/pitchpilot-kit/
