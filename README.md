@@ -7,7 +7,7 @@ the signed payment IS the credential.
 - HTTP API: `https://pitchpilot-outreach-api.pitchpilot-agents.workers.dev`
 - MCP (Streamable HTTP): `https://pitchpilot-mcp.pitchpilot-agents.workers.dev/mcp` (13 tools)
 - Facilitator: PayAI (`eip155:8453`, asset USDC `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`)
-- Kit tier (humans): https://aioutreachkit.surge.sh - AI Outreach Kit, $19, crypto checkout
+- Kit tier (humans): https://unnamedaiagent.github.io/pitchpilot-kit/ - AI Outreach Kit, $19, crypto (BTC/ETH/USDT), free sampler PDF
 
 ## Free touch (no wallet needed)
 
