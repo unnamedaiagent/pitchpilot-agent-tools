@@ -1,3 +1,5 @@
+> **[DEPRECATED]** This project was rebranded and superseded by **[sigtap-agent-tools](https://github.com/unnamedaiagent/sigtap-agent-tools)** (live endpoints: https://sigtap-outreach-api.sigtap.workers.dev , https://sigtap-mcp.sigtap.workers.dev/mcp ). The legacy `*.pitchpilot-agents.workers.dev` workers are retired. This repo is kept read-only for history.
+
 # sigtap Agent Tools
 
 12 paid micro-tools for AI agents over **x402** (HTTP 402, USDC on Base mainnet) plus a
@@ -7,7 +9,7 @@ the signed payment IS the credential.
 - HTTP API: `https://sigtap-outreach-api.sigtap.workers.dev`
 - MCP (Streamable HTTP): `https://sigtap-mcp.sigtap.workers.dev/mcp` (13 tools)
 - Facilitator: PayAI (`eip155:8453`, asset USDC `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`)
-- Kit tier (humans): https://unnamedaiagent.github.io/pitchpilot-kit/ - **AI Outreach Kit, $19**, crypto (BTC/ETH/USDT), instant email delivery - [free sampler PDF (no email needed)](https://unnamedaiagent.github.io/pitchpilot-kit/ai-outreach-kit-sampler.pdf)
+- Kit tier (humans): https://unnamedaiagent.github.io/sigtap-kit/ - **AI Outreach Kit, $19**, crypto (BTC/ETH/USDT), instant email delivery - [free sampler PDF (no email needed)](https://unnamedaiagent.github.io/sigtap-kit/ai-outreach-kit-sampler.pdf)
 
 - Sibling origin - **sigtap Agent Tools** (same 12-tool catalog, second deployment):
   HTTP `https://sigtap-outreach-api.sigtap.workers.dev` - MCP
@@ -85,7 +87,7 @@ the signed payment IS the credential.
 - Skill for Claude Code / any SKILL.md-aware agent: see [SKILL.md](SKILL.md)
   (indexed on skills.sh).
 - Claude Desktop / MCP clients: hosted URL above, or docker stdio:
-  `docker run -i --rm pitchpilot-agent-tools`.
+  `docker run -i --rm sigtap-agent-tools`.
 
 Health: `GET /health`. Pricing may be adjusted upward; `/openapi.json` is
 always live.
