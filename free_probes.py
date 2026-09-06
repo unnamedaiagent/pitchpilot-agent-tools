@@ -83,21 +83,14 @@ def main():
     for label, path, query in PAID:
         # One retry on transient conditions (read timeouts / 5xx): a cold isolate
         # can stall the first challenge for 15-45s+ (facilitator init); the second
-        # attempt lands on a warm isolate. A challenge must still fully validate -
-        # sustained degradation (4xx/5xx with no header) still fails the run.
+        # attempt lands on a warm isolate. The challenge must still fully validate
+        # in every path - sustained degradation (4xx/5xx, no header) still fails.
         try:
-            status, headers, body = fetch(path, query)
-            pay = headers.get("payment-required") or headers.get("Payment-Required")
-            if status is not None and status >= 500:
-                raise RuntimeError(f"transient 5xx (status={status})")
-        except Exception:
             try:
                 status, headers, body = fetch(path, query)
-                pay = headers.get("payment-required") or headers.get("Payment-Required")
-            except Exception as e:
-                bad += 1
-                print(f"  FAIL paid {label}: {e}")
-                continue
+            except Exception:
+                status, headers, body = fetch(path, query)  # one retry, transient-only
+            pay = headers.get("payment-required") or headers.get("Payment-Required")
             if status != 402 or not pay:
                 bad += 1
                 print(f"  FAIL paid {label}: status={status}, payment-required header missing")
