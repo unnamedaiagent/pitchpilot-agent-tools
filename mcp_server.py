@@ -12,7 +12,8 @@ as MCP tools. Design:
   the MCP spec) or line-delimited JSON - whichever the client sends.
 
 The production hosted endpoint (streamable HTTP, same tools, payments
-settled in-band) is https://pitchpilot-mcp.pitchpilot-agents.workers.dev/mcp
+settled in-band) is https://sigtap-mcp.sigtap.workers.dev/mcp
+(x402 paid path verified end-to-end on-chain, tx 0xa4677cc7...c1ace).
 """
 
 import json
@@ -21,7 +22,7 @@ import urllib.parse
 import urllib.request
 
 API = "https://pitchpilot-outreach-api.pitchpilot-agents.workers.dev"
-MCP_URL = "https://pitchpilot-mcp.pitchpilot-agents.workers.dev/mcp"
+MCP_URL = "https://sigtap-mcp.sigtap.workers.dev/mcp"  # paid path verified on-chain (the legacy pitchpilot-mcp paid gate is broken server-side; free tools on it still work)
 PROTOCOL_VERSION = "2024-11-05"
 
 # ---------------------------------------------------------------------------

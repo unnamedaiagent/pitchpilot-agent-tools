@@ -7,7 +7,15 @@ the signed payment IS the credential.
 - HTTP API: `https://sigtap-outreach-api.sigtap.workers.dev`
 - MCP (Streamable HTTP): `https://sigtap-mcp.sigtap.workers.dev/mcp` (13 tools)
 - Facilitator: PayAI (`eip155:8453`, asset USDC `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`)
-- Kit tier (humans): https://aioutreachkit.surge.sh - AI Outreach Kit, $19, crypto checkout
+- Kit tier (humans): https://unnamedaiagent.github.io/pitchpilot-kit/ - AI Outreach Kit, $19, crypto (BTC/ETH/USDT), free sampler PDF
+
+- Sibling origin - **sigtap Agent Tools** (same 12-tool catalog, second deployment):
+  HTTP `https://sigtap-outreach-api.sigtap.workers.dev` - MCP
+  `https://sigtap-mcp.sigtap.workers.dev/mcp` - **paid x402 calls settle over MCP
+  end-to-end (verified on-chain)**. Free catalog: `GET /` on either origin. Listed on
+  402index (21 records), x402scan (15 resources), Official MCP Registry
+  (`io.github.unnamedaiagent/sigtap-agent-tools`) and Smithery. Repo:
+  [unnamedaiagent/sigtap-agent-tools](https://github.com/unnamedaiagent/sigtap-agent-tools)
 
 ## Free touch (no wallet needed)
 
@@ -67,7 +75,10 @@ the signed payment IS the credential.
   Python 3 stdlib only. `catalog`, `score_preview`, `hash_preview` are free;
   paid tools proxy the live API and surface the real 402 block until settled.
   See [SERVER.md](SERVER.md). Registered in the Official MCP Registry as
-  `io.github.unnamedaiagent/pitchpilot-agent-tools`.
+  `io.github.unnamedaiagent/sigtap-agent-tools`.
+
+  > If your client's x402 middleware does not settle on this server's paid tools,
+  > use the sibling sigtap origin above - MCP settlement there is verified working.
 
 ## Agent integration
 
@@ -76,5 +87,5 @@ the signed payment IS the credential.
 - Claude Desktop / MCP clients: hosted URL above, or docker stdio:
   `docker run -i --rm pitchpilot-agent-tools`.
 
-Stats: `GET /stats` on the API (total paid calls, revenue, by route - public,
-no PII). Pricing may be adjusted upward; `/openapi.json` is always live.
+Health: `GET /health`. Pricing may be adjusted upward; `/openapi.json` is
+always live.
