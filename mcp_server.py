@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """PitchPilot Agent Tools - MCP server (stdio, zero-dependency).
 
-Wraps the PitchPilot Outreach API (x402 paid micro-tools, USDC on Base)
+Wraps the sigtap Outreach API origin (x402 paid micro-tools, USDC on Base)
 as MCP tools. Design:
 
 - `catalog` tool and two free-preview tools work with NO wallet.
@@ -16,12 +16,13 @@ settled in-band) is https://sigtap-mcp.sigtap.workers.dev/mcp
 (x402 paid path verified end-to-end on-chain, tx 0xa4677cc7...c1ace).
 """
 
+import base64
 import json
 import sys
 import urllib.parse
 import urllib.request
 
-API = "https://pitchpilot-outreach-api.pitchpilot-agents.workers.dev"
+API = "https://sigtap-outreach-api.sigtap.workers.dev"
 MCP_URL = "https://sigtap-mcp.sigtap.workers.dev/mcp"  # paid path verified on-chain (the legacy pitchpilot-mcp paid gate is broken server-side; free tools on it still work)
 PROTOCOL_VERSION = "2024-11-05"
 
@@ -250,7 +251,17 @@ def api_get(path, args):
         with urllib.request.urlopen(req, timeout=30) as resp:
             return resp.getcode(), resp.read().decode("utf-8", "replace")
     except urllib.error.HTTPError as e:
-        return e.code, e.read().decode("utf-8", "replace")
+        body = e.read().decode("utf-8", "replace")
+        # x402 v2 carries the challenge in the base64 `payment-required` header;
+        # the JSON body is empty. Decode it into the body so MCP clients (and
+        # humans) see the actual payment terms: amount, payTo, network.
+        ph = e.headers.get("payment-required") if e.headers else None
+        if ph:
+            try:
+                body = json.dumps({"payment_required": json.loads(base64.b64decode(ph).decode("utf-8"))})
+            except Exception:
+                pass
+        return e.code, body
     except Exception as e:  # network error
         return 0, json.dumps({"error": str(e)})
 
